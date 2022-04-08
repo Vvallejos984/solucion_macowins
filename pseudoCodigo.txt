@@ -1,0 +1,45 @@
+class Local{
+    method gananciasDia(fecha){
+        return historialVentas.filter(unaVenta->unaVenta.deFecha(fecha)).sum(unaVenta->unaVenta.importe())
+    }
+}
+
+class Venta{
+    method deFecha(_fecha){
+        return equals(_fecha,fecha)
+    }
+    method importe(){
+        return items.sum(unItem.importe())
+    }
+}
+
+class VentaConTarjeta extends Venta{
+    @Override
+    method importe(){
+        super()*1.01 + cantidadCuotas*coeficiente
+    }
+}
+
+class Nueva{
+    method precioFinal(precio){
+        return precio
+    }
+}
+
+class Promocion{
+    method precioFinal(precio){
+        return precio-valorDescuento
+    }
+}
+
+class Liquidacion{
+    method precioFinal(precio){
+        return precio*0.5
+    }
+}
+
+class Prenda{
+    method precioNeto(){
+        return estado.precioFinal(precioBasico)
+    }
+}
